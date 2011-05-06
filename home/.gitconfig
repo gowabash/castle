@@ -1,0 +1,15 @@
+[user]
+    name =  Matt Brown
+    email = gowabash@gmail.com
+[core]
+    editor = vim --nofork
+    excludesfile = /Users/mbrown/.gitignore
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
