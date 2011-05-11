@@ -51,4 +51,4 @@ CYAN="\[\033[0;36m\]"
 GRAY="\[\033[0;37m\]"
 BLUE="\[\033[0;34m\]"
 
-PS1="$GREEN\u@\h$NO_COLOR:\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
+PS1="$GREEN\u@\h$YELLOW:\W$RED\$(parse_git_branch)$NO_COLOR\$ "
