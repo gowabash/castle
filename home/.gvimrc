@@ -7,7 +7,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " How can I make the toolbar stay hidden after a restart?
 set guioptions-=T
 
-colorscheme paper
+colorscheme zenburn
 set number
 set nowrap
 set shiftwidth=2
@@ -21,4 +21,4 @@ set cindent
 set title
 set tags=tags;/
 filetype plugin indent on
-set guifont=Monaco:h12
+set guifont=Inconsolata:h16
