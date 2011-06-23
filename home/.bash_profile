@@ -9,10 +9,12 @@ alias start_star="sudo starling -P /var/run/starling.pid -L /var/log/starling/st
 alias start_mongo="/opt/mongodb/bin/mongod --dbpath=/mongo/data/ --logpath /mongo/logs/mongod.log --fork"
 alias tunnel_mongo_live="ssh -L 27020:localhost:27017 recs-l3 -f -N"
 alias tunnel_mongo_dev="ssh -L 27030:localhost:27017 dev-app -f -N"
+alias tunnel_mongo_bart="ssh -L 27040:localhost:27017 bart.local -f -N"
 alias rest_tunnel_1a="ssh -L 28001:localhost:28017 mongo-1a -f -N"
 alias rest_tunnel_1b="ssh -L 28001:localhost:28017 mongo-1b -f -N"
 alias lm="mongo localhost:27020/product"
 alias dm="mongo localhost:27030/product"
+alias bm="mongo localhost:27040/product"
 alias ks='killall ssh'
 
 if [ -f /opt/local/etc/bash_completion ]; then

@@ -1,25 +1,2 @@
-require 'autotest/redgreen'
-module Autotest::Growl  
-  def self.growl title, msg, img, pri=0, stick=""  
-    system "growlnotify -n autotest --image #{img} -p #{pri} -m #{ msg.inspect} #{title} #{stick}"  
-  end  
-  
-  Autotest.add_hook :ran_command do |autotest|  
-    results = [autotest.results].flatten.join("\n")
-    output = results.slice(/(\d+)\s+tests?,\s*(\d+)\s+assertions?,\s*(\d+)\s+failures?,\s*(\d+)\s+errors?/)  
-    if output  
-      if (($~[3].to_i > 0) or ($~[4].to_i > 0))  
-        growl "Test Results", "#{output}", "~/Library/autotest/rails_fail.png", 2  
-      else  
-        growl "Test Results", "#{output}", "~/Library/autotest/rails_ok.png"   
-      end  
-    end  
-  end
-end  
-  
-#this should go in ~/.autotest
-Autotest.add_hook :initialize do |at|  
-    %w{.svn .hg .git vendor}.each {|exception| at.add_exception(exception)}  
-  at.add_exception "tmp"
-  at.add_exception "app/models/rules"
-end  
+require 'autotest/growl'
+Autotest::Growl::image_dir = 'ruby'

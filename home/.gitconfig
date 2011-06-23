@@ -1,6 +1,6 @@
 [user]
-    name =  Matt Brown
-    email = gowabash@gmail.com
+	name = Matt Brown
+	email = gowabash@gmail.com
 [core]
     editor = vim --nofork
     excludesfile = /Users/mbrown/.gitignore

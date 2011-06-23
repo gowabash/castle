@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/mbrown/development/collector/test'
-let g:netrw_dirhist_2='/Users/mbrown/development/collector/test/functional'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/mbrown/Downloads/sk2/apps/public/modules'
+let g:netrw_dirhist_2='/Users/mbrown/Downloads/sk2/apps/public/modules/render'
+let g:netrw_dirhist_3='/Users/mbrown/Downloads/sk2/apps/public/modules/render/actions'
