@@ -7,9 +7,12 @@ export EDITOR="vim --noplugin"
 
 alias start_star="sudo starling -P /var/run/starling.pid -L /var/log/starling/starling.log -q /var/spool/starling/ -d"
 alias start_mongo="/opt/mongodb/bin/mongod --dbpath=/mongo/data/ --logpath /mongo/logs/mongod.log --fork"
+alias tunnel_mongo_s2_master="ssh -L 27201:localhost:27017 s2-mongo-1a -f -N"
+alias tunnel_mongo_s1_master="ssh -L 27101:localhost:27017 mongo-1a -f -N"
 alias tunnel_mongo_live="ssh -L 27020:localhost:27017 recs-l3 -f -N"
-alias tunnel_mongo_dev="ssh -L 27030:localhost:27017 dev-app -f -N"
+alias tunnel_mongo_dev="ssh -L 27030:localhost:27017 dev-mongo -f -N"
 alias tunnel_mongo_bart="ssh -L 27040:localhost:27017 bart.local -f -N"
+alias tunnel_elastic_live="ssh -L 9300:localhost:9200 -i .ssh/root-ec2 ec2-user@ra-es1.public.aws.igodigital.net -f -N"
 alias rest_tunnel_1a="ssh -L 28001:localhost:28017 mongo-1a -f -N"
 alias rest_tunnel_1b="ssh -L 28001:localhost:28017 mongo-1b -f -N"
 alias lm="mongo localhost:27020/product"
@@ -17,11 +20,15 @@ alias dm="mongo localhost:27030/product"
 alias bm="mongo localhost:27040/product"
 alias ks='killall ssh'
 
+alias start_mysql='echo sudo /opt/local/bin/mysqld_safe5 with an ampersand'
+alias stop_mysql='/opt/local/bin/mysqladmin5 -h 127.0.0.1 -u rails -p shutdown'
+alias mydb='mysql -u rails -h 127.0.0.1 -p '
+
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
-complete -C /Users/mbrown/scripts/rake_tab_complete.rb -o default rake
+#complete -C /Users/mbrown/scripts/rake_tab_complete.rb -o default rake
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 
