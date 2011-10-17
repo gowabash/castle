@@ -22,3 +22,6 @@ set title
 set tags=tags;/
 filetype plugin indent on
 set guifont=Inconsolata:h16
+
+au BufRead,BufNewFile *.thor set filetype=ruby
+
