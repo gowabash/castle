@@ -21,10 +21,15 @@ alias lm2="mongo localhost:27202/product --shell ~/.mongo/set_secondary.js"
 alias dm="mongo localhost:27030/product"
 alias bm="mongo localhost:27040/product"
 alias ks='killall ssh'
+alias show_tag='git show-ref --tags | grep '
+alias wget="curl -O"
 
 alias start_mysql='echo sudo /opt/local/bin/mysqld_safe5 with an ampersand'
 alias stop_mysql='/opt/local/bin/mysqladmin5 -h 127.0.0.1 -u rails -p shutdown'
 alias mydb='mysql -u rails -h 127.0.0.1 -p '
+alias powstart="echo '* Starting the Pow server...'
+launchctl unload '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null || true 
+launchctl load -Fw '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null"
 
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
