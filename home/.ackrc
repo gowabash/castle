@@ -4,3 +4,5 @@
 --type-set=cuke=.feature
 --type-set=conf=.conf
 --ignore-dir=culerity_page_errors
+--ignore-dir=coverage
+--ignore-dir=public

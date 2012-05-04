@@ -1,8 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/mbrown/development/batchelor/cron_scripts'
-let g:netrw_dirhist_2='/Users/mbrown/development/batchelor/cron_scripts/buyseasons'
-let g:netrw_dirhist_3='/Users/mbrown/development/feedback/trunk'
-let g:netrw_dirhist_4='/Users/mbrown/development/feedback/trunk/app/views/comments'
-let g:netrw_dirhist_5='/Users/mbrown/development/silverMonkey'
-let g:netrw_dirhist_6='/Users/mbrown/development/redRhino'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/mbrown/development/silverMonkey'
+let g:netrw_dirhist_2='/Users/mbrown/development/collector'
+let g:netrw_dirhist_3='/Users/mbrown/development/silverMonkey'
+let g:netrw_dirhist_4='/Users/mbrown/development/silverMonkey/app'
+let g:netrw_dirhist_5='/Users/mbrown/development/silverMonkey/app/models'

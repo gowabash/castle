@@ -13,3 +13,6 @@
 	co = checkout
 	br = branch
 	ci = commit
+  x = log --pretty=format:\"%h %Cgreen%ad %Creset| %s%Cred%d %C(yellow)[%an]\" --graph --date=short 
+[github]
+	user = gowabash

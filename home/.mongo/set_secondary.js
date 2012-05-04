@@ -18,3 +18,11 @@ rId = function(name) {
   r = db.RetailerSettings.findOne({name : re});
   print("Retailer name - "+r.name + "\nRetailer id - "+r.id);
 }
+
+get_products = function(name) {
+}
+
+get_lists = function(name) { 
+  local = connect('localhost:27017/product')
+  db
+}
