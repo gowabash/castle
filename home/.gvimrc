@@ -7,6 +7,9 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " How can I make the toolbar stay hidden after a restart?
 set guioptions-=T
 
+" pathogen autoloading stuff
+call pathogen#infect()
+
 colorscheme wombat256
 set number
 set nowrap

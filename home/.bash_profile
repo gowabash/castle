@@ -94,3 +94,8 @@ BLUE="\[\033[0;34m\]"
 PS1="$GREEN\u@\h$YELLOW:\W$RED\$(parse_git_branch)$NO_COLOR\$ "
 
 export CC=/usr/bin/gcc-4.2
+
+#Scribbler variables
+export SCRIBBLR_ACCESS='AKIAJSAFXNXN5OUNQQ3A'
+export SCRIBBLR_KEY='uHNUE+GO/V4ks6VYt40fjwve2/SUSEHm7eo7wibm'
+
