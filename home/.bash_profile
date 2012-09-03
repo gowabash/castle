@@ -3,7 +3,8 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 export PATH=${PATH}:/opt/local/lib/mysql5/bin/:/opt/local/sbin:/opt/mongodb/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 export RAILS_ENV=development
-export EDITOR="vim --noplugin"
+export EDITOR="mvim"
+export GIT_MERGE_AUTOEDIT=no
 
 alias start_star="sudo starling -P /var/run/starling.pid -L /var/log/starling/starling.log -q /var/spool/starling/ -d"
 alias start_mongo="/opt/mongodb/bin/mongod --dbpath=/mongo/data/ --logpath /mongo/logs/mongod.log --fork"
@@ -51,6 +52,8 @@ alias start_mysql='echo sudo /opt/local/bin/mysqld_safe5 with an ampersand'
 alias stop_mysql='/opt/local/bin/mysqladmin5 -h 127.0.0.1 -u rails -p shutdown'
 alias mydb='mysql -u rails -h 127.0.0.1 -p '
 
+alias vi='mvim -v'
+
 alias powstart="echo '* Starting the Pow server...'
 launchctl unload '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null || true 
 launchctl load -Fw '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null"
@@ -93,9 +96,7 @@ BLUE="\[\033[0;34m\]"
 
 PS1="$GREEN\u@\h$YELLOW:\W$RED\$(parse_git_branch)$NO_COLOR\$ "
 
-export CC=/usr/bin/gcc-4.2
+#export CC=/usr/bin/gcc-4.2
+export CC=/usr/bin/gcc
 
-#Scribbler variables
-export SCRIBBLR_ACCESS='AKIAJSAFXNXN5OUNQQ3A'
-export SCRIBBLR_KEY='uHNUE+GO/V4ks6VYt40fjwve2/SUSEHm7eo7wibm'
-
+source ~/.scribblr_keys

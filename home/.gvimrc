@@ -10,7 +10,8 @@ set guioptions-=T
 " pathogen autoloading stuff
 call pathogen#infect()
 
-colorscheme wombat256
+" colorscheme wombat256
+colorscheme codeschool
 set number
 set nowrap
 set shiftwidth=2
@@ -27,4 +28,5 @@ filetype plugin indent on
 set guifont=Inconsolata:h16
 
 au BufRead,BufNewFile *.thor set filetype=ruby
-
+au BufRead,BufNewFile *.ru set filetype=ruby
+au BufRead,BufNewFile *.jad set filetype=java
