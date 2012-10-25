@@ -1,13 +1,13 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH=${PATH}:/opt/local/lib/mysql5/bin/:/opt/local/sbin:/opt/mongodb/bin
+export PATH=${PATH}:/opt/local/sbin:/mongo/mongodb/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 export RAILS_ENV=development
 export EDITOR="mvim"
 export GIT_MERGE_AUTOEDIT=no
 
 alias start_star="sudo starling -P /var/run/starling.pid -L /var/log/starling/starling.log -q /var/spool/starling/ -d"
-alias start_mongo="/opt/mongodb/bin/mongod --dbpath=/mongo/data/ --logpath /mongo/logs/mongod.log --fork"
+alias start_mongo="/mongo/mongodb/bin/mongod --dbpath=/mongo/data/ --logpath /mongo/logs/mongod.log --fork"
 
 alias tunnel_mongo_s2_master="ssh -L 27201:localhost:27017 s2-mongo-1a -f -N"
 alias tunnel_mongo_s2="ssh -L 27202:localhost:27017 s2-mongo-1b -f -N"
@@ -97,7 +97,7 @@ BLUE="\[\033[0;34m\]"
 PS1="$GREEN\u@\h$YELLOW:\W$RED\$(parse_git_branch)$NO_COLOR\$ "
 
 #export CC=/usr/bin/gcc-4.2
-export CC=/usr/bin/gcc
+#export CC=/usr/bin/gcc
 
 source ~/.scribblr_keys
 
