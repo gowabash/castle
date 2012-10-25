@@ -25,7 +25,9 @@ set cindent
 set title
 set tags=tags;/
 filetype plugin indent on
-set guifont=Inconsolata:h16
+" set guifont=Inconsolata:h16
+" https://github.com/adobe/Source-Code-Pro/downloads
+set guifont=Source\ Code\ Pro:h15
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.ru set filetype=ruby
