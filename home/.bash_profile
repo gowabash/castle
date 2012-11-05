@@ -48,21 +48,17 @@ alias wm1="mongo localhost/white_mouse_development"
 alias show_tag='git show-ref --tags | grep '
 alias wget="curl -O"
 
-alias start_mysql='echo sudo /opt/local/bin/mysqld_safe5 with an ampersand'
-alias stop_mysql='/opt/local/bin/mysqladmin5 -h 127.0.0.1 -u rails -p shutdown'
-alias mydb='mysql -u rails -h 127.0.0.1 -p '
-
 alias vi='mvim -v'
 
 alias powstart="echo '* Starting the Pow server...'
 launchctl unload '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null || true 
 launchctl load -Fw '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null"
 
-if [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
 fi
 
-#complete -C /Users/mbrown/scripts/rake_tab_complete.rb -o default rake
+source $HOME/castle/home/git_complete
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 
@@ -70,14 +66,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 #MASTER
 export EC2_PRIVATE_KEY=~/ec2/pk-ec2-mgmt.pem
 export EC2_CERT=~/ec2/cert-ec2-mgmt.pem
-
-#export AWS_CREDENTIAL_FILE=/opt/RDSCli-1.0.006/credential-file-path.template
-#export AWS_RDS_HOME=/opt/RDSCli-1.0.006
-#export AWS_IAM_HOME=/opt/IAMCli
-export EC2_HOME=/opt/ec2
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
-export PATH=/opt/ec2/bin:$PATH:/opt/RDSCli-1.0.006/bin:/opt/scala/bin:/opt/IAMCli
-
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -96,9 +84,7 @@ BLUE="\[\033[0;34m\]"
 
 PS1="$GREEN\u@\h$YELLOW:\W$RED\$(parse_git_branch)$NO_COLOR\$ "
 
-#export CC=/usr/bin/gcc-4.2
-#export CC=/usr/bin/gcc
-
 source ~/.scribblr_keys
 
 complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < $HOME/.ssh/config)" scp sftp ssh
+complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < /etc/ssh_config)" scp sftp ssh
