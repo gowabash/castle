@@ -1,2 +1,0 @@
-require 'autotest/growl'
-Autotest::Growl::image_dir = 'ruby'
