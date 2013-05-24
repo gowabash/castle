@@ -10,6 +10,9 @@ set guioptions-=T
 " pathogen autoloading stuff
 call pathogen#infect()
 
+"no bells of any kind
+set noeb vb t_vb=
+
 " colorscheme wombat256
 colorscheme codeschool
 set number
