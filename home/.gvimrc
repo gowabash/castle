@@ -1,6 +1,6 @@
 set nocompatible
 if has("syntax")
-    so ${VIMRUNTIME}/syntax/syntax.vim
+  so ${VIMRUNTIME}/syntax/syntax.vim
 endif
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -13,8 +13,7 @@ call pathogen#infect()
 "no bells of any kind
 set noeb vb t_vb=
 
-" colorscheme wombat256
-colorscheme codeschool
+set nopaste
 set number
 set nowrap
 set shiftwidth=2
@@ -32,6 +31,23 @@ filetype plugin indent on
 " https://github.com/adobe/Source-Code-Pro/downloads
 set guifont=Source\ Code\ Pro:h15
 
+" Go highligting
+set rtp+=/usr/local/go/misc/vim
+"syntax on
+
+
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.ru set filetype=ruby
 au BufRead,BufNewFile *.jad set filetype=java
+"
+" Octave syntax 
+augroup filetypedetect 
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave 
+augroup END 
+
+" colorscheme codeschool
+" colorscheme wombat256
+" colorscheme CodeFactoryv3
+set background=light
+colorscheme solarized
+

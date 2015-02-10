@@ -16,5 +16,6 @@
   x = log --pretty=format:\"%h %Cgreen%ad %Creset| %s%Cred%d %C(yellow)[%an]\" --graph --date=short 
 [github]
 	user = gowabash
+  token = 238f4c34ad1354baf9dd25b61a09976116dbd7fa
 [push]
 	default = tracking

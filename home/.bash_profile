@@ -1,34 +1,25 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH=/usr/local/bin:${PATH}:/opt/local/sbin:/mongo/mongodb/bin
+export PATH=/usr/local/bin:${PATH}:/opt/local/sbin:/mongo/mongodb/bin:/usr/local/sbin:/usr/local/share/npm/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 export IGO_DEVELOPER=matt
 export EDITOR="mvim"
 export GIT_MERGE_AUTOEDIT=no
+export CLASSPATH=.:~/jars
 
-alias start_mongo="/mongo/mongodb/bin/mongod --dbpath=/mongo/data/ --logpath /mongo/logs/mongod.log --fork"
-alias start_elastic_search="elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.11/config/elasticsearch.yml"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home
 
-alias tunnel_mongo_s2_master="ssh -L 27201:localhost:27017 s2-mongo-1a -f -N"
-alias tunnel_mongo_s2="ssh -L 27202:localhost:27017 s2-mongo-1b -f -N"
-alias tunnel_mongo_s1_master="ssh -L 27101:localhost:27017 s1-mongo-1a -f -N"
-alias tunnel_mongo_s1="ssh -L 27102:localhost:27017 s1-mongo-1b -f -N"
-alias tunnel_mongo_s3_master="ssh -L 27301:localhost:27017 s3-mongo-1a -f -N"
-alias tunnel_mongo_s3="ssh -L 27302:localhost:27017 s3-mongo-1b -f -N"
-alias tunnel_mongo_s4_master="ssh -L 27401:localhost:27017 s4-mongo-1a -f -N"
-alias tunnel_mongo_s4="ssh -L 27402:localhost:27017 s4-mongo-1b -f -N"
-alias tunnel_mongo_s5_master="ssh -L 27501:localhost:27017 s5-mongo-1a -f -N"
-alias tunnel_mongo_s5="ssh -L 27502:localhost:27017 s5-mongo-1b -f -N"
-alias tunnel_mongo_s7_master="ssh -L 27701:localhost:27017 s7-mongo-1a -f -N"
-alias tunnel_mongo_s7="ssh -L 27702:localhost:27017 s7-mongo-1b -f -N"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+alias start_mongo="/mongo/mongodb/bin/mongod --config /mongo/conf/mongo.conf"
+alias start_elastic_search="/elasticsearch/elasticsearch/bin/elasticsearch -d -p /elasticsearch/elasticsearch/pidifle es.config=/elasticsearch/elasticsearch/config/elasticsearch.yml"
+alias start_kafka="zkServer start;kafka-server-start.sh -daemon /usr/local/etc/kafka/server.properties"
+
+alias tunnel_mongo_s2_master="ssh -L 27201:localhost:27017 stack2-mongo-1a -f -N"
+alias tunnel_mongo_s2="ssh -L 27202:localhost:27017 stack2-mongo-1b -f -N"
 
 alias tunnel_mongo_stage="ssh -L 27050:localhost:27017 stage-mongo -f -N"
 alias tunnel_mongo_demo="ssh -L 27030:localhost:27017 demo-mongo-1a -f -N"
-alias tunnel_mongo_bart="ssh -L 27040:localhost:27017 bart.local -f -N"
-
-alias tunnel_elastic_s1="ssh -L 9301:localhost:9200 s1-es-1a -f -N"
-alias tunnel_elastic_s2="ssh -L 9302:localhost:9200 s2-es-1a -f -N"
-alias tunnel_elastic_s4="ssh -L 9304:localhost:9200 s4-es-1a -f -N"
 
 alias bd1="open 'http://localhost:8000/bigdesk/index.html?port=9301&go'"
 alias bd2="open 'http://localhost:8000/bigdesk-master/index.html?port=9302&go'"
@@ -38,12 +29,12 @@ alias rest_tunnel_stack2="ssh -L 28102:localhost:28017 s2-mongo-1a -f -N"
 alias rest_tunnel_stack3="ssh -L 28103:localhost:28017 s3-mongo-1a -f -N"
 alias rest_tunnel_stack4="ssh -L 28104:localhost:28017 s4-mongo-1a -f -N"
 
-alias lm1="mongo localhost:27102/product --shell ~/.mongo/set_secondary.js"
-alias lm2="mongo localhost:27202/product --shell ~/.mongo/set_secondary.js"
-alias lm3="mongo localhost:27302/product --shell ~/.mongo/set_secondary.js"
-alias lm4="mongo localhost:27402/product --shell ~/.mongo/set_secondary.js"
-alias lm5="mongo localhost:27502/product --shell ~/.mongo/set_secondary.js"
-alias lm7="mongo localhost:27702/product --shell ~/.mongo/set_secondary.js"
+
+alias tunnel_pg_s0="ssh -L 5500:localhost:5432 s0-postgres -f -N"
+alias tunnel_pg_stage="ssh -L 5400:localhost:5432 stage-postgres -f -N"
+
+alias pg-s0="psql -h localhost -p 5500 -U igo ck"
+alias pg-stage="psql -h localhost -p 5400 -U igo ck"
 
 alias sm="mongo localhost:27050/product --shell ~/.mongo/set_secondary.js"
 alias dm="mongo localhost:27030/product --shell ~/.mongo/set_secondary.js"
@@ -56,16 +47,40 @@ alias show_tag='git show-ref --tags | grep '
 alias wget="curl -O"
 
 alias vi='mvim -v'
+alias eclipse='open ~/bin/adt/eclipse/Eclipse.app'
 
 alias powstart="echo '* Starting the Pow server...'
 launchctl unload '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null || true 
 launchctl load -Fw '$HOME/Library/LaunchAgents/cx.pow.powd.plist' 2>/dev/null"
 
+ulimit -n 16384
+
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
 
-source $HOME/castle/home/git_complete
+show_pulls() {
+  projects=( "cie" "batchelor" "silverMonkey" "crimsonKraken" "collector" "greenHawk" "orangeOwl" "mission_control" "blackSquid" "redRhino") 
+  for i in "${projects[@]}"
+  do
+    gh pr -u iGoDigital-LLC -r $i
+  done
+}
+
+open_pull() {
+  gh pr -u iGoDigital-LLC -r $1 -n $2 -B
+}
+
+tunnel_mongo() {
+  ssh -L 27100:localhost:27017 ubuntu@mongo-$2.$1.igodigital.net -f -N
+}
+
+tunnel_mongo_stack2() {
+  key="/Users/mbrown/.ssh/recs-west.pem"
+  ssh -L 27100:localhost:27017 ec2-user@mongo-$2.stack2.igodigital.net -f -N -i $key
+}
+
+source $HOME/.homesick/repos/gowabash/castle/home/git_complete
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 
@@ -91,7 +106,8 @@ BLUE="\[\033[0;34m\]"
 
 PS1="$GREEN\u@\h$YELLOW:\W$RED\$(parse_git_branch)$NO_COLOR\$ "
 
-source ~/.scribblr_keys
-
 complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < $HOME/.ssh/config)" scp sftp ssh
-complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < /etc/ssh_config)" scp sftp ssh
+
+$(boot2docker shellinit 2>&1 | grep -i export)
+export DOCKER_HOST=tcp://127.0.0.1:2376
+export FIG_PROJECT_NAME=cobaltstartfish
