@@ -25,6 +25,8 @@ set nohlsearch
 set showmode
 set cindent
 set title
+set matchtime=1
+set cc=80
 set tags=tags;/
 filetype plugin indent on
 " set guifont=Inconsolata:h16
@@ -51,3 +53,22 @@ augroup END
 set background=light
 colorscheme solarized
 
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_python_checkers = ['pep8']
+
+:map ]l :lnext<CR>
+:map [l :lprevious<CR>
+
+command! GitUrl :call system("git-url " . fnamemodify(expand("%"), ":~:.") . "#L" . line("."))
+
+" ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim

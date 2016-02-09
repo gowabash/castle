@@ -7,4 +7,6 @@
 --ignore-dir=coverage
 --ignore-dir=public
 --ignore-dir=log
-
+--ignore-dir=test/data
+--ignore-file=ext:csv
+--ignore-file=is:.coverage

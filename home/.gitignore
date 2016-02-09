@@ -6,3 +6,4 @@ tmp/*
 test/data
 tags
 coverage/*
+.env
