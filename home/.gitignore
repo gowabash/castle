@@ -7,3 +7,4 @@ test/data
 tags
 coverage/*
 .env
+*.log

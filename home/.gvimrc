@@ -22,11 +22,9 @@ set softtabstop=2
 set expandtab
 set nobackup
 set nohlsearch
-set showmode
 set cindent
-set title
 set matchtime=1
-set cc=80
+set cc=100
 set tags=tags;/
 filetype plugin indent on
 " set guifont=Inconsolata:h16
@@ -35,17 +33,16 @@ set guifont=Source\ Code\ Pro:h15
 
 " Go highligting
 set rtp+=/usr/local/go/misc/vim
-"syntax on
 
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.ru set filetype=ruby
 au BufRead,BufNewFile *.jad set filetype=java
 "
-" Octave syntax 
-augroup filetypedetect 
-  au! BufRead,BufNewFile *.m,*.oct set filetype=octave 
-augroup END 
+" Octave syntax
+augroup filetypedetect
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup END
 
 " colorscheme codeschool
 " colorscheme wombat256
@@ -54,9 +51,9 @@ set background=light
 colorscheme solarized
 
 " syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -72,3 +69,5 @@ command! GitUrl :call system("git-url " . fnamemodify(expand("%"), ":~:.") . "#L
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+

@@ -2,6 +2,7 @@ export CLICOLOR=1
 #export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=exfxcxdxbxegedabagacad
 export PATH=/usr/local/bin:${PATH}:/opt/local/sbin:/mongo/mongodb/bin:/usr/local/sbin:/usr/local/share/npm/bin
+export PATH=$PATH:/Users/mbrown/deleteme/gradle/gradle-2.11/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 export IGO_DEVELOPER=matt
 export EDITOR="mvim"
@@ -15,7 +16,7 @@ alias ks='killall ssh'
 
 alias wget="curl -O"
 
-alias vi='mvim -v'
+alias vi='nvim'
 alias fig=docker-compose
 
 if [ -f /usr/local/etc/bash_completion ]; then
@@ -70,7 +71,7 @@ fi
 function removeFromPath() {
 export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
-setjdk 1.7
+setjdk 1.8
 
 export GOPATH=~/gopath
 
@@ -81,3 +82,5 @@ PATH=$PATH:$CDAP_SDK_HOME/bin
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/development
 source /usr/local/bin/virtualenvwrapper.sh
+
+vpn_connect='sudo openconnect https://vpn-indy.exacttarget.com -b --authgroup=Aloha --quiet --user=mbrown'
